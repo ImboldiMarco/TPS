@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #974242;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #43b68c;
+  color: white;
+}
+</style>
+</head>
+<body>
+    <form> 
+    <label for="fname">Nome:</label><br>
+    <input type="text" id="nome" name="nome"><br>
+    <label for="fname">Cognome:</label><br>
+    <input type="text" id="cognome" name="cognome"><br>
+    <label for="fname">Indirizzo:</label><br>
+    <input type="text" id="indirizzo" name="indirizzo"><br>
+    <label for="fname">Città:</label><br>
+    <input type="text" id="citta" name="citta"><br>
+    <label for="fname">Numero civico:</label><br>
+    <input type="text" id="ncivico" name="ncivico"><br>
+    <button type="button" onclick="aggiungiDati()">Aggiungi</button>
+    <table id="customers">
+
+</form> 
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th colspan="3">Indirizzo</th>
+      </tr>
+    </thead>
+</table>
+
+<script>
+function aggiungiDati() {
+    const nome = document.getElementById("nome");
+    const cognome = document.getElementById("cognome");
+    const indirizzo = document.getElementById("indirizzo");
+    const citta = document.getElementById("citta");
+    const ncivico = document.getElementById("ncivico");
+
+    const newRow = table.insertRow();
+
+    "<td>" + nome + "</td>" +
+    "<td>" + cognome + "</td>" +
+    "<td>" + indirizzo + "</td>" +
+    "<td>" + citta + "</td>" +
+    "<td>" + ncivico + "</td>";
+}
+</script> 
+</body>
+</html>
