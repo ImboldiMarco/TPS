@@ -48,8 +48,9 @@
       </tr>
     </thead>
 </table>
-
+ 
 <script>
+    let anagrafica = [];
 function aggiungiDati() {
     let nome = document.getElementById("nome").value;
     let cognome = document.getElementById("cognome").value;
@@ -58,10 +59,10 @@ function aggiungiDati() {
     let ncivico = document.getElementById("ncivico").value;
 
     const newRow = document.getElementById("customers");
-    info = {nome, cognome, indirizzo, citta, ncivico};
-    anagrafica = [info];
-
-    newRow.innerHTML +="<tr>"+"<td>" + anagrafica[0].nome + "</td>" +"<td>" + anagrafica[0].cognome + "</td>" +"<td>" + anagrafica[0].indirizzo + "</td>" +"<td>" + anagrafica[0].citta + "</td>" +"<td>" + anagrafica[0].ncivico + "</td>" + "</tr>";
+    info = [nome, cognome, indirizzo, citta, ncivico];
+    anagrafica.push(info);
+  
+    newRow.innerHTML +="<tr>"+"<td>" + nome + "</td>" +"<td>" + cognome + "</td>" +"<td>" + indirizzo + "</td>" +"<td>" + citta + "</td>" +"<td>" + ncivico + "</td>" + "</tr>";
 }
 </script> 
 </body>
