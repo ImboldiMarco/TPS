@@ -1,0 +1,55 @@
+</head>
+<body>
+
+<input type="file" onchange="leggiFile(this)">
+<div id="test"></div>
+<canvas id="myCanvas" width="10000" height="10000">
+</canvas> 
+</body>
+      
+<script>
+    function leggiFile(input){
+    let file = input.files[0] 
+    let lettoreF = new FileReader() 
+    lettoreF.readAsText(file);
+   
+    lettoreF.onload = function() {
+    let contenuto = lettoreF.result;
+    insertDati(contenuto);
+    }
+
+    }
+    function insertDati(dati) {
+     let riga = dati.split('\n');
+     tabella = document.createElement("table");
+     tabella.style.border = "2px solid black";
+     tabella.style.borderCollapse = "collapse";
+     
+      for (let i=riga.length-1; i>0; i--) { 
+        let t = riga[i].split(',');         
+        var row = tabella.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = t[0];
+        cell2.innerHTML = t[1];
+        let a=t[0];
+        let b=t[1];
+    }
+    const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// Define a new path
+ctx.beginPath();
+
+// Set a start-point
+ctx.moveTo(0,0);
+
+// Set an end-point
+ctx.lineTo(a,b);
+
+// Draw it
+ctx.stroke();
+    document.getElementById("test").appendChild(tabella);
+}
+  </script>
+</html>
