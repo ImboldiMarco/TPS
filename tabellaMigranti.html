@@ -5,6 +5,8 @@
 <div id="test"></div>
 <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #000000;">
 </canvas> 
+<br>
+<table id="table"></table>
 </body>
       
 <script>
@@ -24,28 +26,55 @@
     }
     function insertDati(dati) {
     let riga = dati.split('\n');
-    tabella = document.createElement("table");
-    tabella.style.border = "2px solid black";
+    tabella = document.getElementById("table");
+    tabella.style.border = "1px solid black";
     tabella.style.borderCollapse = "collapse";
     
+
+    
+    let colonne=[];
+    for (let i = 0; i < riga.length; i++) {
+        colonne[i] = riga[i].split(',')
+    }
+
+    console.log(colonne);
+    colonne.forEach(element =>{
+    const righe = document.createElement("tr");
+    Object.keys(element).forEach(elemento => {
+        const colonna = document.createElement("td");
+        const testo = document.createTextNode(element[elemento]);
+        colonna.appendChild(testo);
+        colonna.style.border = "1px solid black";
+        righe.appendChild(colonna);
+        righe.style.border = "1px solid black";
+    })
+    tabella.appendChild(righe);
+  })
+  
+    let anno =[]
+    let num=[]
+    let n=[]
+    let a=[]
+  for (let i = 1; i < colonne.length; i++) {
+        for (let j = 0; j < colonne[i].length; j++) {
+          colonne[i][j]=colonne[i][j].replaceAll('"','');
+        if (j%2==0){
+            anno.push(colonne[i][j]);
+        }else{
+            num.push(Number(colonne[i][j]));
+        }
+    	}
+    }
+    for (let i = 1; i < colonne.length; i++) {
+      n[i] = num[i]/10;
+      a[i] = anno[i]/10;
+    }
     ctx.beginPath();
     ctx.moveTo(0,0);
+    ctx.lineTo(a[0],n[0]);
+    ctx.lineTo(a[1],n[1]);
 
-      for (let i=riga.length-1; i>0; i--) { 
-        var t = riga[i].split(',');         
-        var row = tabella.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = t[0];
-        cell2.innerHTML = t[1];
-        alert(Number(t[1]));
-       // var a = Math.abs(canvas.height/181436)*Number(t[1]);
-       // var b = number(canvas.width/riga.length)*i;  
-      //alert(a);
-        //ctx.lineTo(b,a);
-      }
-ctx.stroke();
-  document.getElementById("test").appendChild(tabella);
+    ctx.stroke();
 }
   </script>
 </html>
