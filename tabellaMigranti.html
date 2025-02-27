@@ -53,8 +53,6 @@
   
     let anno =[]
     let num=[]
-    let n=[]
-    let a=[]
   for (let i = 1; i < colonne.length; i++) {
         for (let j = 0; j < colonne[i].length; j++) {
           colonne[i][j]=colonne[i][j].replaceAll('"','');
@@ -65,16 +63,26 @@
         }
     	}
     }
-    for (let i = 1; i < colonne.length; i++) {
-      n[i] = num[i]/10;
-      a[i] = anno[i]/10;
-    }
+    Ux= 1000/anno.length;
+    Uy = 500/massimo(num);
+    X=0;
+    Y=500;
     ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(a[0],n[0]);
-    ctx.lineTo(a[1],n[1]);
+    ctx.moveTo(X,Y);
+    for(let i =0;i<num.length;i++){
+      X+=Ux;
+      Y= 500-parseInt(num[i]*Uy)
+      ctx.lineTo(X,Y);
+    }
 
     ctx.stroke();
+}
+function massimo(num) {
+  let max=0;
+  for(let i =0;i<num.length;i++){
+    max=Math.max(max,num[i]);
+  }
+  return max;
 }
   </script>
 </html>
