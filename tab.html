@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #974242;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #43b68c;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+    <button type="button" onclick="torna_indietro()">torna indietro</button>
+<table id="table">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Indirizzo</th>
+        <th>Sesso</th>
+        <th>Età</th>  
+    </tr>
+    </thead>
+</table>
+ 
+<script>
+    
+    const data = JSON.parse(localStorage.getItem("data"));
+    const table = document.getElementById("table");
+    generaTabella(data);
+        
+function generaTabella(tab){
+    tab.forEach(element =>{
+        const riga = document.createElement("tr");
+        Object.keys(element).forEach(elemento => {
+            const colonna = document.createElement("td");
+            const testo = document.createTextNode(element[elemento]);
+            colonna.appendChild(testo);
+            riga.appendChild(colonna);
+        })
+        table.appendChild(riga);
+    })
+}
+    
+function torna_indietro() {
+    location.herf;
+}
+
+</script> 
+</body>
+</html>

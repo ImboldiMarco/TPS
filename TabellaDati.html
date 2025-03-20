@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #974242;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #43b68c;
+  color: white;
+}
+</style>
+</head>
+<body>
+    <form> 
+    <label for="fname">Nome:</label><br>
+    <input type="text" id="nome" name="nome"><br>
+    <label for="fname">Cognome:</label><br>
+    <input type="text" id="cognome" name="cognome"><br>
+    <label for="fname">Indirizzo:</label><br>
+    <input type="text" id="indirizzo" name="indirizzo"><br>
+    <label for="fname">sesso:</label><br>
+    <input type="text" id="sesso" name="ses"><br>
+    <label for="fname">età:</label><br>
+    <input type="text" id="eta" name="eta"><br>
+    <button type="button" onclick="aggiungiDati()">Aggiungi</button>
+    <button type="button" onclick="vai_alla_tabella()">tabella</button>
+    
+
+</form><!--
+<table id="customers">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Indirizzo</th>
+        <th>Sesso</th>
+        <th>Età</th>  
+    </tr>
+    </thead>
+</table>-->
+ 
+<script>
+    let array = [];
+function aggiungiDati() {
+  let info={
+    nome : document.getElementById("nome").value,
+    cognome : document.getElementById("cognome").value,
+    sesso : document.getElementById("sesso").value,
+    indirizzo : document.getElementById("indirizzo").value,
+    eta : document.getElementById("eta").value
+  }
+    array.push(info);
+    document.getElementById("nome").value='';
+    document.getElementById("cognome").value='';
+    document.getElementById("sesso").value='';
+    document.getElementById("indirizzo").value='';
+    document.getElementById("eta").value='';
+
+    const data = JSON.stringify(array);
+    localStorage.setItem("data", data);
+
+}
+
+function vai_alla_tabella(){
+  location.herf=;
+}
+</script> 
+</body>
+</html>
